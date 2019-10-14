@@ -1,5 +1,0 @@
-/Users/juanuys/Documents/bricks-crusher-godot/.mono/temp/obj/Tools/Bricks Crusher.csprojAssemblyReference.cache
-/Users/juanuys/Documents/bricks-crusher-godot/.mono/temp/bin/Tools/Bricks Crusher.dll
-/Users/juanuys/Documents/bricks-crusher-godot/.mono/temp/bin/Tools/Bricks Crusher.pdb
-/Users/juanuys/Documents/bricks-crusher-godot/.mono/temp/obj/Tools/Bricks Crusher.dll
-/Users/juanuys/Documents/bricks-crusher-godot/.mono/temp/obj/Tools/Bricks Crusher.pdb
