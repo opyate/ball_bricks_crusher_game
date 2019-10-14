@@ -31,8 +31,3 @@ func _input(event):
 					var ball = balls.pop_back()
 					yield(get_tree().create_timer(.1), "timeout")
 					ball.apply_central_impulse(new_velocity)
-				print('waiting 2 seconds before checking the array...')
-				yield(get_tree().create_timer(2), "timeout")
-				print(balls)
-				print(balls.empty())
-				
