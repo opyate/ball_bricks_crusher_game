@@ -5,7 +5,7 @@ var in_flight = false
 var balls = []
 var new_velocity: Vector2
 
-const ball_speed = 40
+const ball_speed = 400
 
 func _ready():
 	set_physics_process(true)
@@ -17,15 +17,6 @@ func _ready():
 		add_child(ball)
 		balls.append(ball)
 
-func _physics_process(delta):
-	if in_flight:
-		# TODO set in_flight to false once all balls are dead
-		for ball in balls:
-			yield(get_tree().create_timer(.2), "timeout")
-			ball.apply_central_impulse(new_velocity)
-		in_flight = false
-
-
 func _input(event):
 	# Mouse in viewport coordinates
 	if event is InputEventMouseButton:
@@ -34,3 +25,6 @@ func _input(event):
 				var shoot_direction: Vector2 = event.position - position
 				new_velocity = shoot_direction.normalized() * ball_speed
 				in_flight = true
+				for ball in balls:
+					yield(get_tree().create_timer(.1), "timeout")
+					ball.apply_central_impulse(new_velocity)
