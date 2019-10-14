@@ -12,9 +12,8 @@ func _ready():
 	var height = get_viewport_rect().size.y
 	for x in range(16, width, 32):
 		for y in range(16, ceil(height * 0.7), 32):
-			
 			var brick: StaticBody2D = brick_scene.instance()
 			brick.position = Vector2(x, y)
 			brick.visible = true
-			brick.set_value(99)
+			brick.set_value(10)
 			add_child(brick)

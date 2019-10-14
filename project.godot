@@ -23,6 +23,12 @@ config/icon="res://icon.png"
 
 gdscript/completion/autocomplete_setters_and_getters=true
 
+[layer_names]
+
+2d_physics/layer_1="walls"
+2d_physics/layer_2="bricks"
+2d_physics/layer_3="balls"
+
 [rendering]
 
 environment/default_environment="res://default_env.tres"

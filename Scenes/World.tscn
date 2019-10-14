@@ -7,6 +7,8 @@
 script = ExtResource( 1 )
 
 [node name="Walls" type="StaticBody2D" parent="."]
+editor/display_folded = true
+collision_mask = 7
 
 [node name="Collision" type="CollisionPolygon2D" parent="Walls"]
 polygon = PoolVector2Array( 0, 608, -16, 608, -16, -16, 1040, -16, 1040, 608, 1024, 608, 1024, 0, 0, 0 )

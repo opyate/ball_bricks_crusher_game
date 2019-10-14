@@ -11,11 +11,12 @@ bounce = 1.0
 radius = 4.0
 
 [node name="Ball" type="RigidBody2D"]
-position = Vector2( -50, -50 )
+collision_layer = 4
+collision_mask = 3
 mode = 2
 physics_material_override = SubResource( 1 )
 gravity_scale = 0.0
-contacts_reported = 2
+contacts_reported = 10
 contact_monitor = true
 linear_damp = 0.0
 angular_damp = 0.0

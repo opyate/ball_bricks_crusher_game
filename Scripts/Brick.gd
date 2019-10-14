@@ -5,7 +5,8 @@ var value = 1
 func hit():
 	set_value(value - 1)
 	if value == 0:
-		print('brick die')
+		# wait half a second for particle effect
+		# yield(get_tree().create_timer(.5), "timeout")
 		self.queue_free()
 
 func set_value(val):
