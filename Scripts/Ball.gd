@@ -9,6 +9,7 @@ onready var cannon = get_parent()
 func _ready():
 	set_physics_process(true)
 	position = Vector2(0,0)
+	connect("tree_exited", cannon, "ball_died", [])
 
 func _physics_process(delta):	
 	var bodies = get_colliding_bodies()
