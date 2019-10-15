@@ -9,13 +9,15 @@ onready var cannon = get_parent()
 func _ready():
 	set_physics_process(true)
 	position = Vector2(0,0)
-	connect("tree_exited", cannon, "ball_died", [])
+	$VisibilityNotifier.connect("screen_exited", self, "_on_screen_exited")
+	$VisibilityNotifier.connect("screen_exited", cannon, "_on_ball_died")
 
-func _physics_process(delta):	
+func _physics_process(delta):
 	var bodies = get_colliding_bodies()
 	for body in bodies:
 		if body.is_in_group("bricks"):
 			body.hit()
 	
-	if get_position().y > get_viewport_rect().end.y:
-		queue_free()
+
+func _on_screen_exited():
+	queue_free()
