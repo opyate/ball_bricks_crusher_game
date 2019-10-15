@@ -23,11 +23,16 @@ config/icon="res://icon.png"
 
 gdscript/completion/autocomplete_setters_and_getters=true
 
+[display]
+
+window/size/height=768
+
 [layer_names]
 
 2d_physics/layer_1="walls"
 2d_physics/layer_2="bricks"
 2d_physics/layer_3="balls"
+2d_physics/layer_4="floor"
 
 [rendering]
 

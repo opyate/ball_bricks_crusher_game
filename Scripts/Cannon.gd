@@ -9,6 +9,10 @@ signal next_step
 
 var number_of_balls = 10
 
+# this is set to Vector2(0,0) for starters so that when reset() is run for the first time,
+# it gets a valid ball_last_position.x
+var ball_last_position = Vector2(0,0)
+
 func reset():
 	# ball count was not zero - leak?
 	assert(ball_count == 0)
@@ -20,9 +24,19 @@ func reset():
 		add_child(ball)
 		ball_count += 1
 	
+	var my_position = get_position()
+	my_position.x += ball_last_position.x
+	set_position(my_position)
+		
 	in_flight = false
+	ball_last_position = false
 
 func _ready():
+	var width = get_viewport_rect().size.x
+	var height = get_viewport_rect().size.y
+	# height - 32 is also the position where the floor is
+	set_position(Vector2(width / 2, height - 32))
+	
 	connect("next_step", get_parent(), "_on_next_step", [])
 	connect("next_step", get_node("/root/World/Bricks"), "_on_next_step", [])
 	set_physics_process(true)
@@ -46,3 +60,7 @@ func _on_ball_died():
 	if ball_count == 0:
 		emit_signal("next_step")
 		reset()
+
+func _ball_last_position(position: Vector2):
+	if not ball_last_position and position.x != 0 and position.y != 0:
+		ball_last_position = Vector2(position.x, position.y)
