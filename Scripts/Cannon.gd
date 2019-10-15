@@ -13,6 +13,7 @@ var number_of_balls = 10
 # it gets a valid ball_last_position.x
 var ball_last_position = Vector2(0,0)
 
+# this is called after every "try" and should be the single place where everything is reset.
 func reset():
 	# ball count was not zero - leak?
 	assert(ball_count == 0)
@@ -29,7 +30,7 @@ func reset():
 	set_position(my_position)
 		
 	in_flight = false
-	ball_last_position = false
+	ball_last_position = Vector2(0,0)
 
 func _ready():
 	var width = get_viewport_rect().size.x
@@ -62,5 +63,5 @@ func _on_ball_died():
 		reset()
 
 func _ball_last_position(position: Vector2):
-	if not ball_last_position and position.x != 0 and position.y != 0:
+	if ball_last_position != position:
 		ball_last_position = Vector2(position.x, position.y)
