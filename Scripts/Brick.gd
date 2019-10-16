@@ -1,4 +1,4 @@
-extends StaticBody2D
+extends KinematicBody2D
 
 var value = 1
 
@@ -14,6 +14,9 @@ func set_value(val):
 	value = val
 	label.text = str(val)
 
+func set_color(color):
+	var colorRect: ColorRect = self.get_child(1)
+	colorRect.set_frame_color(ColorN(color))
+
 func _ready():
     add_to_group("bricks")
-

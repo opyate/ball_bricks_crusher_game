@@ -7,6 +7,7 @@ onready var cannon = get_parent()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	add_to_group("balls")
 	set_physics_process(true)
 	$VisibilityNotifier.connect("screen_exited", self, "_on_screen_exited")
 	$VisibilityNotifier.connect("screen_exited", cannon, "_on_ball_died")
