@@ -7,7 +7,7 @@ const ball_speed = 400
 var ball_count = 0
 signal next_step
 
-var number_of_balls = 10
+var number_of_balls = 50
 
 # this is set to Vector2(0,0) for starters so that when reset() is run for the first time,
 # it gets a valid ball_last_position.x
@@ -38,8 +38,8 @@ func _ready():
 	# height - 32 is also the position where the floor is
 	set_position(Vector2(width / 2, height - 32))
 	
-	connect("next_step", get_parent(), "_on_next_step", [])
-	connect("next_step", get_node("/root/World/Bricks"), "_on_next_step", [])
+	connect("next_step", get_parent(), "_on_next_step")
+	connect("next_step", get_node("/root/World/Bricks"), "_on_next_step")
 	set_physics_process(true)
 	reset()
 
@@ -53,7 +53,7 @@ func _input(event):
 				in_flight = true
 				for ball in get_children():
 					yield(get_tree().create_timer(.1), "timeout")
-					ball.apply_central_impulse(new_velocity)
+					ball.shoot(new_velocity)
 
 # this is called whenever a ball dies, via a signal
 func _on_ball_died():

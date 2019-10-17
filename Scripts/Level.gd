@@ -1,3 +1,5 @@
+# TODO generate a bunch of blocks off-screen at the top, so they can bump down as the level progresses.
+
 extends Node2D
 
 class_name Level
@@ -20,8 +22,13 @@ func set_level(parent: Node, level_number: int, width: int, height: int):
 	var number_of_blocks = randi() % (level_number + 10)
 
 	# set up a grid of bricks, and add them to a group
+	var xcount = 0
+	var ycount = 0
 	for x in range(16, width, 32):
+		xcount += 1
+		ycount = 0
 		for y in range(16, blocks_height, 32):
+			ycount += 1
 			# skip bricks for these conditions
 			var is_x_edge: bool = x == 16 or x == width - 16
 			var is_y_edge: bool = y == 16 or y == blocks_height - 16
@@ -32,7 +39,7 @@ func set_level(parent: Node, level_number: int, width: int, height: int):
 				continue
 			
 			# checkered pattern
-			if x % (16 + 32+32+32) == 0 and every20 % 2 == 0:
+			if not (xcount % 2 == 0 or ycount % 2 == 0):
 				continue
 			
 			var brick: StaticBody2D = brick_scene.instance()

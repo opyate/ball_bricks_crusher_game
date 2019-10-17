@@ -29,7 +29,7 @@ func load_level(level_number):
 	level.set_level(self, level_number, width, height)
 
 # debug just shows every level layout for 1 second
-var debug = true
+var debug = false
 func _ready():
 	width = get_viewport_rect().size.x
 	height = get_viewport_rect().size.y
