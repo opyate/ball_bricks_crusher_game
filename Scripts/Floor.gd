@@ -1,7 +1,7 @@
 extends Area2D
 
-onready var bricks = get_node("/root/World/Bricks")
-onready var cannon = get_node("/root/World/Cannon")
+onready var bricks = get_node("/root/World/Game/Bricks")
+onready var cannon = get_node("/root/World/Game/Cannon")
 var bricks_hit_floor = false
 signal player_died
 

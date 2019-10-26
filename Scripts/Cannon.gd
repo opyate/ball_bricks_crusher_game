@@ -39,7 +39,7 @@ func _ready():
 	set_position(Vector2(width / 2, height - 32))
 	
 	connect("next_step", get_parent(), "_on_next_step")
-	connect("next_step", get_node("/root/World/Bricks"), "_on_next_step")
+	connect("next_step", get_node("/root/World/Game/Bricks"), "_on_next_step")
 	set_physics_process(true)
 	reset()
 
