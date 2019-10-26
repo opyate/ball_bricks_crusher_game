@@ -2,7 +2,7 @@ extends Position2D
 
 
 
-var new_position
+var new_position = Vector2(0, 0)
 var tween_down = Tween.new()
 
 const Level = preload("Level.gd")
@@ -10,7 +10,7 @@ var level = Level.new()
 var width
 var height
 
-func reset(level_number = 0):
+func reset(level_number):
 	new_position = Vector2(0, 0)
 	
 	# HACK: wait a second before we remove all the bricks so the tween can finish
@@ -49,8 +49,9 @@ func _ready():
 			remove_all_bricks()
 			load_level(i)
 			yield(get_tree().create_timer(1.0), "timeout")
-	else:
-		reset()
+	
+
+	connect("start_game", self, "_on_start_game")
 	
 
 func _process(delta):
@@ -65,4 +66,8 @@ func _on_next_step():
 		print("no more bricks left")
 
 func _on_player_died():
-	reset()
+	print("Bricks.gd: _on_player_died")
+
+func _on_start_game(level_number):
+	print("Bricks: _on_start_game ", level_number)
+	#reset(level_number)
