@@ -1,5 +1,3 @@
-# TODO generate a bunch of blocks off-screen at the top, so they can bump down as the level progresses.
-
 extends Node2D
 
 class_name Level
@@ -27,12 +25,13 @@ func set_level(parent: Node, level_number: int, width: int, height: int):
 	for x in range(16, width, 32):
 		xcount += 1
 		ycount = 0
-		for y in range(16, blocks_height, 32):
+		for y in range(16 - 512, blocks_height, 32):
 			ycount += 1
-			# skip bricks for these conditions
+			# skip bricks for these conditions:
+			
+			# skip the edges for 10 turns, every 10 turns
 			var is_x_edge: bool = x == 16 or x == width - 16
 			var is_y_edge: bool = y == 16 or y == blocks_height - 16
-			# skip the edges for 10 turns, every 10 turns
 			if is_x_edge and every20 < 10:
 				continue
 			if is_y_edge and every20 < 10:
