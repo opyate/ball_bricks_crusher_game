@@ -20,6 +20,13 @@ func reset(level_number = 0):
 	remove_all_bricks()
 	load_level(level_number)
 
+func is_all_bricks_gone():
+	var has_no_more_children = true
+	for node in get_children():
+		if node.is_in_group("bricks"):
+			has_no_more_children = false
+	return has_no_more_children
+
 func remove_all_bricks():
 	for node in get_children():
 		if node.is_in_group("bricks"):
@@ -54,6 +61,8 @@ func _process(delta):
 # move all the bricks down
 func _on_next_step():
 	new_position.y += 32
+	if is_all_bricks_gone():
+		print("no more bricks left")
 
 func _on_player_died():
 	reset()
