@@ -49,10 +49,6 @@ func _ready():
 			remove_all_bricks()
 			load_level(i)
 			yield(get_tree().create_timer(1.0), "timeout")
-	
-
-	connect("start_game", self, "_on_start_game")
-	
 
 func _process(delta):
 	if tween_down and not tween_down.is_active() and new_position.y != get_position().y:
@@ -69,5 +65,4 @@ func _on_player_died():
 	print("Bricks.gd: _on_player_died")
 
 func _on_start_game(level_number):
-	print("Bricks: _on_start_game ", level_number)
-	#reset(level_number)
+	reset(level_number)
